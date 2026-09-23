@@ -158,6 +158,17 @@
     text-align:center;
     color:var(--muted);
   }
+  .decline{
+    margin-top:18px;
+    text-align:center;
+  }
+  .decline a{
+    font-size:13.5px;
+    color:var(--muted);
+    text-decoration:underline;
+    cursor:pointer;
+  }
+  .decline a:hover{color:var(--ink)}
   .card{
     margin-top:30px;
     background:var(--card);
@@ -243,11 +254,19 @@
   <p class="required">(OBRIGATÓRIA)</p>
 
   <div class="cta-area">
-    <select payt_element="installment" data-object="UPSELLCODE-PRODUCTCODE"></select>
+    <select payt_element="installment" data-object="LYAAPA-4O28QK"></select>
     <!-- Botão de compra Payt — trocar data-object pelo código do upsell da taxa -->
-    <a href="#" payt_action="oneclick_buy" data-object="UPSELLCODE-PRODUCTCODE">Pagar a taxa e acessar o app</a>
+    <a href="#" payt_action="oneclick_buy" data-object="LYAAPA-4O28QK">Pagar a taxa e acessar o app</a>
     <p class="cta-note">Pagamento único, válido por 12 meses. Sem renovação automática.</p>
   </div>
+
+  <div class="decline"><a id="decline" href="https://lottopremiumdown1.vercel.app">Não quero pagar a taxa agora</a></div>
+  <script>
+    (function () {
+      var el = document.getElementById('decline');
+      if (el && location.search) el.href = el.href + location.search;
+    })();
+  </script>
 
   <div class="card">
 
