@@ -87,6 +87,11 @@
     color:#fff;
     font-size:13px;
     font-weight:700;
+    animation:fill 2.2s cubic-bezier(.22,.7,.3,1) both;
+  }
+  @keyframes fill{from{width:0}to{width:94%}}
+  @media (prefers-reduced-motion:reduce){
+    .progress span{animation:none}
   }
   .sub{
     margin-top:26px;
@@ -216,7 +221,22 @@
 
   <h1>Parabéns</h1>
 
-  <div class="progress"><span>94%</span></div>
+  <div class="progress"><span id="progress">94%</span></div>
+  <script>
+    (function () {
+      var el = document.getElementById('progress');
+      if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var inicio = null;
+      function tick(t) {
+        if (inicio === null) inicio = t;
+        var p = Math.min((t - inicio) / 2200, 1);
+        el.textContent = Math.round(94 * (1 - Math.pow(1 - p, 3))) + '%';
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      el.textContent = '0%';
+      requestAnimationFrame(tick);
+    })();
+  </script>
 
   <p class="sub">Falta só um passo para liberar seu acesso. O Lotto App cobra uma taxa de <strong>ANUIDADE</strong> de cadastro de <span class="fee">R$ 67,00</span> para liberar o aplicativo.</p>
 
