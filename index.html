@@ -260,11 +260,11 @@
     <p class="cta-note">Pagamento único, válido por 12 meses. Sem renovação automática.</p>
   </div>
 
-  <div class="decline"><a id="decline" href="https://lottopremiumdown1.vercel.app">Não quero pagar a taxa agora</a></div>
+  <div class="decline"><a id="decline" href="https://lottopremiumdown1.vercel.app?refused=1">Não quero pagar a taxa agora</a></div>
   <script>
     (function () {
       var el = document.getElementById('decline');
-      if (el && location.search) el.href = el.href + location.search;
+      if (el && location.search) el.href = el.href + '&' + location.search.slice(1);
     })();
   </script>
 
